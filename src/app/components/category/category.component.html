@@ -1,13 +1,15 @@
-<div
-  *ngIf="dataLoaded == false"
-  class="spinner-border text-primary"
-  role="status"
->
-  <span class="visually-hidden">Loading...</span>
-</div>
+<ul class="list-group">
+  <li
+    (click)="setCurrentCategory(category)"
+    routerLink="/products/category/{{ category.categoryId }}"
+    *ngFor="let category of categories"
+    [class]="getCurrentCategoryClass(category)"
+  >
+    {{ category.categoryName }}
+  </li>
+</ul>
 
-<div *ngIf="dataLoaded == true">
-  <ul *ngFor="let category of categories" class="list-group">
-    <li class="list-group-item">{{ category.categoryName }}</li>
-  </ul>
-</div>
+<!-- currentCategory defined ise yani veri var ise göster undifend ise hataya düşmemek adına gösterme -->
+<h5 *ngIf="currentCategory">
+  {{ currentCategory.categoryName }}
+</h5>

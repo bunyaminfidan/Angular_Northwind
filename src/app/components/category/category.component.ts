@@ -9,7 +9,7 @@ import { CategoryService } from 'src/app/services/category.service';
 })
 export class CategoryComponent implements OnInit {
   categories: Category[] = [];
-  dataLoaded: boolean = false;
+  currentCategory: Category;
 
   constructor(private categoryService: CategoryService) {}
 
@@ -20,7 +20,23 @@ export class CategoryComponent implements OnInit {
   getCategories() {
     this.categoryService.getCategories().subscribe((response) => {
       this.categories = response.data;
-      this.dataLoaded = true;
     });
   }
+
+  setCurrentCategory(category: Category) {
+    this.currentCategory = category;
+  }
+
+  // html class a  active ekleme
+  getCurrentCategoryClass(category: Category) {
+    if (category == this.currentCategory) {
+      return "list-group-item active"
+    } else {
+      return "list-group-item"
+    }
+  }
+
+
+
+
 }
