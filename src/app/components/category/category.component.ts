@@ -30,13 +30,17 @@ export class CategoryComponent implements OnInit {
   // html class a  active ekleme
   getCurrentCategoryClass(category: Category) {
     if (category == this.currentCategory) {
-      return "list-group-item active"
+      return 'list-group-item active';
     } else {
-      return "list-group-item"
+      return 'list-group-item';
     }
   }
 
-
-
-
+  getAllCategoryClass() {
+    if (!this.currentCategory) {
+      return 'list-group-item active';
+    } else {
+      return 'list-group-item';
+    }
+  }
 }

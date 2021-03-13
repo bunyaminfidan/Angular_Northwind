@@ -1,4 +1,11 @@
 <ul class="list-group">
+  <Li
+  
+    routerLink="/products"
+    [class]="getAllCategoryClass()"
+  >
+    Tüm Ürünler
+  </Li>
   <li
     (click)="setCurrentCategory(category)"
     routerLink="/products/category/{{ category.categoryId }}"
