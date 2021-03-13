@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ProductResponseModel } from '../models/productResponseModel';
+import { ListResponseModel } from '../models/listResponseModel';
+import { Product } from '../models/product';
 
 //Injectable: enjekte edilecek servis
 @Injectable({
@@ -19,7 +20,7 @@ export class ProductService {
   //get<ProductResponseModel>: gelen datayı ProductResponseModel modeline map edeceksin demek.
   //subscribe: abone ol
 
-  getProducts(): Observable<ProductResponseModel> {
-    return this.httpClient.get<ProductResponseModel>(this.apiUrl);
+  getProducts(): Observable<ListResponseModel<Product>> {
+    return this.httpClient.get<ListResponseModel<Product>>(this.apiUrl);
   }
 }
