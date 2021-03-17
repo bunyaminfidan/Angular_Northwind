@@ -6,22 +6,39 @@
   <span class="visually-hidden">Loading...</span>
 </div>
 
+<div class="mb-3">
+  <label for="filterText" class="form-label"
+    >Ürün Ara</label
+  >
+  <input
+    type="text"
+    class="form-control"
+    [(ngModel)]="filterText" 
+    id="filterText"
+    placeholder="Arama ifadesi giriniz"
+  />
+</div >
+
+<div *ngIf="filterText" class="alert alert-success" > {{ filterText }} aradınız</div>
+
 <table *ngIf="dataLoaded == true" class="table table-hover">
   <thead class="thead-dark">
     <tr>
-      <th scope="col">Id</th>
-      <th scope="col">Product Name</th>
-      <th scope="col">Category Id</th>
-      <th scope="col">Unit Price</th>
-      <th scope="col">Units In Stock</th>
+      <th scope="col">#</th>
+      <th scope="col">Ürün İsmi</th>
+      <th scope="col">Kategori</th>
+      <th scope="col">Fiyat</th>
+      <th scope="col">Kdv'li Fiyat</th>
+      <th scope="col">Stok Adedi</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let product of products">
       <td scope="row">{{ product.productId }}</td>
-      <td scope="row">{{ product.productName }}</td>
+      <td scope="row">{{ product.productName | uppercase }}</td>
       <td scope="row">{{ product.categoryId }}</td>
-      <td scope="row">{{ product.unitPrice }}</td>
+      <td scope="row">{{ product.unitPrice | currency }}</td>
+      <td scope="row">{{ product.unitPrice | vatAdded: 18 | currency }}</td>
       <td scope="row">{{ product.unitsInStock }}</td>
     </tr>
   </tbody>
