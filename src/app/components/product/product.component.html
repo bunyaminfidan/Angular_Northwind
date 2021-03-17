@@ -7,19 +7,19 @@
 </div>
 
 <div class="mb-3">
-  <label for="filterText" class="form-label"
-    >Ürün Ara</label
-  >
+  <label for="filterText" class="form-label">Ürün Ara</label>
   <input
     type="text"
     class="form-control"
-    [(ngModel)]="filterText" 
+    [(ngModel)]="filterText"
     id="filterText"
     placeholder="Arama ifadesi giriniz"
   />
-</div >
-
-<div *ngIf="filterText" class="alert alert-success" > {{ filterText }} aradınız</div>
+</div>
+x
+<div *ngIf="filterText" class="alert alert-success">
+  {{ filterText }} aradınız
+</div>
 
 <table *ngIf="dataLoaded == true" class="table table-hover">
   <thead class="thead-dark">
@@ -30,16 +30,21 @@
       <th scope="col">Fiyat</th>
       <th scope="col">Kdv'li Fiyat</th>
       <th scope="col">Stok Adedi</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let product of products | filterPipe:filterText"> 
+    <!-- | currency para simgesi --> 
+    <tr *ngFor="let product of products | filterPipe: filterText">
       <td scope="row">{{ product.productId }}</td>
       <td scope="row">{{ product.productName | uppercase }}</td>
       <td scope="row">{{ product.categoryId }}</td>
-      <td scope="row">{{ product.unitPrice | currency }}</td>
-      <td scope="row">{{ product.unitPrice | vatAdded: 18 | currency }}</td>
+      <td scope="row">{{ product.unitPrice  | currency }}</td> 
+      <td scope="row">{{ product.unitPrice | vatAdded: 18  | currency }}</td>
       <td scope="row">{{ product.unitsInStock }}</td>
+      <td>
+        <button (click) = "addToCart(product)" class="btn btn-success">Sepete Ekle</button>
+      </td>
     </tr>
   </tbody>
 </table>
