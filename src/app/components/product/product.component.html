@@ -33,7 +33,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let product of products">
+    <tr *ngFor="let product of products | filterPipe:filterText"> 
       <td scope="row">{{ product.productId }}</td>
       <td scope="row">{{ product.productName | uppercase }}</td>
       <td scope="row">{{ product.categoryId }}</td>
