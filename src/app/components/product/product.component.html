@@ -34,16 +34,18 @@ x
     </tr>
   </thead>
   <tbody>
-    <!-- | currency para simgesi --> 
+    <!-- | currency para simgesi -->
     <tr *ngFor="let product of products | filterPipe: filterText">
       <td scope="row">{{ product.productId }}</td>
       <td scope="row">{{ product.productName | uppercase }}</td>
       <td scope="row">{{ product.categoryId }}</td>
-      <td scope="row">{{ product.unitPrice  | currency }}</td> 
-      <td scope="row">{{ product.unitPrice | vatAdded: 18  | currency }}</td>
+      <td scope="row">{{ product.unitPrice | currency }}</td>
+      <td scope="row">{{ product.unitPrice | vatAdded: 18 | currency }}</td>
       <td scope="row">{{ product.unitsInStock }}</td>
       <td>
-        <button (click) = "addToCart(product)" class="btn btn-success">Sepete Ekle</button>
+        <button (click)="addToCart(product)" class="btn btn-success">
+          Sepete Ekle
+        </button>
       </td>
     </tr>
   </tbody>

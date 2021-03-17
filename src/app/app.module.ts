@@ -12,7 +12,8 @@ import { NaviComponent } from './components/navi/navi.component';
 import { VatAddedPipe } from './pipes/vat-added.pipe';
 import { FilterPipePipe } from './pipes/filter-pipe.pipe';
 
-import { ToastrModule } from 'ngx-toastr'; //Bildirim işlemleri için. Alertfy gibi
+import { ToastrModule } from 'ngx-toastr';
+import { CartSummaryComponent } from './components/cart-summary/cart-summary.component'; //Bildirim işlemleri için. Alertfy gibi
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { ToastrModule } from 'ngx-toastr'; //Bildirim işlemleri için. Alertfy 
     NaviComponent,
     VatAddedPipe,
     FilterPipePipe,
+    CartSummaryComponent,
   ],
   imports: [
     BrowserModule,
