@@ -13,7 +13,7 @@
       <a class="dropdown-item">
         <span class="badge bg-secondary">{{ cartItem.quantity }}</span>
         {{ cartItem.product.productName }}
-        <span  class="badge bg-secondary"> Sil</span>
+        <span (click)="removeFromCart(cartItem.product)"  class="badge bg-secondary">  Sil</span>
         </a
       >
     </li>
