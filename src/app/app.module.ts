@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http'; // api istek için http isteği için gerek
-import { FormsModule } from '@angular/forms'; // ngModule kullanmak için. html de girilen texti alabilmek için.
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // ngModule kullanmak için. html de girilen texti alabilmek için.
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -13,7 +13,8 @@ import { VatAddedPipe } from './pipes/vat-added.pipe';
 import { FilterPipePipe } from './pipes/filter-pipe.pipe';
 
 import { ToastrModule } from 'ngx-toastr';
-import { CartSummaryComponent } from './components/cart-summary/cart-summary.component'; //Bildirim işlemleri için. Alertfy gibi
+import { CartSummaryComponent } from './components/cart-summary/cart-summary.component';
+import { ProductAddComponent } from './components/product-add/product-add.component'; //Bildirim işlemleri için. Alertfy gibi
 
 @NgModule({
   declarations: [
@@ -24,12 +25,14 @@ import { CartSummaryComponent } from './components/cart-summary/cart-summary.com
     VatAddedPipe,
     FilterPipePipe,
     CartSummaryComponent,
+    ProductAddComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule, //// api istek için http isteği için gerek
     FormsModule, // ngModule kullanmak için. html de girilen texti alabilmek için. benim uygulamama forms ile ilgili çalışmları desteğini ver
+    ReactiveFormsModule, //add işlemleri için gerekli
     BrowserAnimationsModule,
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right',
