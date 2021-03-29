@@ -25,7 +25,7 @@ export class ProductAddComponent implements OnInit {
     private toastrService: ToastrService
   ) {}
 
-  ngOnInit(): void {
+  ngOnInit(): void { 
     this.createProductAddForm();
   }
 
@@ -43,7 +43,10 @@ export class ProductAddComponent implements OnInit {
       let productModel = Object.assign({}, this.productAddForm.value);
       this.productService.add(productModel).subscribe((response) => {
         console.log(response);
-        this.toastrService.success('Ürün eklendi', 'Başarılı');
+        this.toastrService.success(response.message, 'Başarılı');
+      },responseError=> {
+        console.log(responseError.error)
+        this.toastrService.error(responseError.error, 'Başarılı');
       });
     } else {
       this.toastrService.error('Formunuz eksik', 'Dikkat');
