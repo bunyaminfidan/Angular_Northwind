@@ -3,21 +3,26 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpInterceptor
+  HttpInterceptor,
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-
   constructor() {}
 
-  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+  //post,get vb istek yaparken her isteğe TOKEN ekler.
+  //C# middleware benzeri işi yapıyor.
+  intercept(
+    request: HttpRequest<any>,
+    next: HttpHandler
+  ): Observable<HttpEvent<unknown>> {
+    let token = localStorage.getItem('token');
+    let newRequest: HttpRequest<any>;
+    newRequest = request.clone({
+      headers: request.headers.set('Authorization', 'Bearer ' + token),
+    });
 
-    let token= localStorage.getItem("token")
-    let newRequest : HttpRequest<any> 
-    return next.handle(request);
+    return next.handle(newRequest);
   }
 }
-
