@@ -23,6 +23,7 @@ export class AuthService {
   //localStorage: tarayıcı içinde veri tutmak için
   isAuthenticated() {
     if (localStorage.getItem('token')) {
+      console.log(localStorage.getItem('token'))
       return true;
     } else {
       return false;
